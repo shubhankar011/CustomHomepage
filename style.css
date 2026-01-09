@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --bg-color: #ffffff;
   --text-color: #121212;
@@ -70,4 +71,84 @@ form button{
     color: var(--text-color);
     transition: background-color 0.3s ease;
 
+=======
+:root {
+  --bg-color: #ffffff;
+  --text-color: #121212;
+  --button-bg: #e0e0e0;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --button-bg: rgba(255, 255, 255, 0.1);
+}
+
+#theme-toggle {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: 0.3s ease;
+    font-size: 18px;
+    width:120px;
+    text-align: center;
+    padding-top: 8px;
+    margin-right: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.header{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem 0rem;
+    display: flex;
+    justify-content: center;
+}
+.top{
+    margin: auto;
+    /* padding: 10px 20px; */
+    border: 2px solid rgba(18, 19, 23, 0.89);
+    display: flex;
+    width: max-content;
+    border-radius: 40px;
+}
+input{
+    height: 40px;
+    width: 490px;
+    font-size: larger;
+    padding-left: 10px;
+    border: 0px solid white;
+    border-radius: 40px;
+    outline: none;
+    background-color: transparent;
+    color: var(--text-color);
+}
+::placeholder {
+  color: var(--text-color);
+  opacity: 0.7; 
+}
+form button{
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    font-size: larger;
+    border: 0px solid white;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    color: var(--text-color); 
+    background-color: rgba(128, 128, 128, 0.53); 
+    background-color: var(--button-bg); 
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+>>>>>>> master
 }
