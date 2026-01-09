@@ -53,7 +53,7 @@ input{
 }
 ::placeholder {
   color: var(--text-color);
-  opacity: 0.7; /* Slight transparency for a better look */
+  opacity: 0.7; 
 }
 form button{
     height: 40px;
@@ -63,10 +63,9 @@ form button{
     border: 0px solid white;
     border-bottom-right-radius: 40px;
     border-top-right-radius: 40px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
     color: var(--text-color); 
-    background-color: rgba(128, 128, 128, 0.53); /* Use a soft gray instead of solid black */
-    background-color: var(--button-bg); /* Use the new variable */
+    background-color: rgba(128, 128, 128, 0.53); 
+    background-color: var(--button-bg); 
     color: var(--text-color);
     transition: background-color 0.3s ease;
 
