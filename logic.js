@@ -1,29 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const rootElement = document.documentElement;
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
 
-    const sunIcon = 'sun-icon.png';
-    const moonIcon = 'moon-icon.png';
+if (localStorage.getItem('theme') === 'dark') {
+    body.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = 'Light-Mode';
+}
 
-    function setTheme(theme) {
-        rootElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        
-        
-        if (themeIcon) {
-            themeIcon.src = (theme === 'dark') ? moonIcon : sunIcon;
-        }
-    }
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = rootElement.getAttribute('data-theme');
-            const newTheme = (currentTheme === 'light') ? 'dark' : 'light';
-            setTheme(newTheme);
-        });
+themeToggle.addEventListener('click', () => {
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = 'Dark-Mode';
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = 'Light-Mode';
     }
 });
