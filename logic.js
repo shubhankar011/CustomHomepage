@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         newCard.appendChild(icon);
         newCard.appendChild(span);
-        
+
         return newCard;
     }
 
@@ -77,4 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('myCustomLinks', JSON.stringify(savedCards));
         }
     });
+    function setDynamicBackground() {
+        const body = document.body;
+        const onlineImage = "https://picsum.photos/1920/1080";
+        const localImage = "images/default-bg.jpg";
+        if (navigator.onLine) {
+            body.style.backgroundImage = `url('${onlineImage}?t=${new Date().getTime()}')`;
+        } else {
+            body.style.backgroundImage = `url('${localImage}')`;
+        }
+    }
+
+    setDynamicBackground();
 });
