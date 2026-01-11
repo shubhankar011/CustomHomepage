@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newCard.href = url;
         newCard.className = 'card';
         newCard.target = "_blank";
+        newCard.classList.add("ubuntu-regular");;
 
         const icon = document.createElement('img');
         try {
@@ -47,12 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {
             icon.src = 'https://www.google.com/s2/favicons?domain=google.com&sz=64'; // Fallback
         }
-        icon.style.width = "32px";
-        icon.style.marginBottom = "10px";
+        icon.className = 'cimg';
+        // icon.style.width = "26px";
+        // icon.style.marginBottom = "10px";
 
         const span = document.createElement('span');
         span.textContent = name;
-
+        span.classList.add("cspan");
         newCard.appendChild(icon);
         newCard.appendChild(span);
 
