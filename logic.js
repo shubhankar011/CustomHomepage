@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
@@ -9,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     themeToggle.addEventListener('click', () => {
-        if (body.getAttribute('data-theme') === 'dark') {
+        const isDark = body.getAttribute('data-theme') === 'dark';
+        if (isDark) {
             body.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
             themeToggle.textContent = 'Dark-Mode';
@@ -24,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const clockElement = document.getElementById('clock');
         if (clockElement) {
             const now = new Date();
-            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-            clockElement.textContent = timeString;
+            clockElement.textContent = now.toLocaleTimeString([], {
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+            });
         }
     }
     setInterval(updateClock, 1000);
@@ -34,10 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const addBtn = document.getElementById('add-card-btn');
     const container = document.querySelector('.card-container');
 
+    const defaultLinks = [
+        { name: "GitHub", url: "https://github.com" },
+        { name: "YouTube", url: "https://www.youtube.com" },
+        { name: "Gemini", url: "https://gemini.google.com" },
+        { name: "YT Music", url: "https://music.youtube.com" },
+        { name: "Notebook LM", url: "https://notebooklm.google.com" }
+    ];
+
+    // Load data once
+    let savedCards = JSON.parse(localStorage.getItem('myCustomLinks'));
+    if (!savedCards || savedCards.length === 0) {
+        savedCards = defaultLinks;
+        localStorage.setItem('myCustomLinks', JSON.stringify(savedCards));
+    }
+
     function createCard(name, url) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'card-wrapper';
+
         const newCard = document.createElement('a');
         newCard.href = url;
-        newCard.className = 'card';
+        newCard.className = 'card ubuntu-regular';
         newCard.target = "_blank";
 
         const icon = document.createElement('img');
@@ -45,48 +64,55 @@ document.addEventListener('DOMContentLoaded', () => {
             const domain = new URL(url).hostname;
             icon.src = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
         } catch (e) {
-            icon.src = 'https://www.google.com/s2/favicons?domain=google.com&sz=64'; // Fallback
+            icon.src = 'https://www.google.com/s2/favicons?domain=google.com&sz=64';
         }
-        icon.style.width = "32px";
-        icon.style.marginBottom = "10px";
+        icon.className = 'cimg';
 
         const span = document.createElement('span');
         span.textContent = name;
+        span.className = 'cspan';
+
+        const delBtn = document.createElement('button');
+        delBtn.innerHTML = '&times;';
+        delBtn.className = 'delete-btn';
+        delBtn.onclick = (e) => {
+            e.preventDefault();
+            if (confirm(`Delete ${name}?`)) {
+                wrapper.remove();
+                savedCards = savedCards.filter(c => !(c.name === name && c.url === url));
+                localStorage.setItem('myCustomLinks', JSON.stringify(savedCards));
+            }
+        };
 
         newCard.appendChild(icon);
         newCard.appendChild(span);
+        wrapper.appendChild(newCard);
+        wrapper.appendChild(delBtn);
 
-        return newCard;
+        return wrapper;
     }
 
-    const savedCards = JSON.parse(localStorage.getItem('myCustomLinks')) || [];
     savedCards.forEach(card => {
         const cardElement = createCard(card.name, card.url);
         container.insertBefore(cardElement, addBtn);
     });
 
     addBtn.addEventListener('click', () => {
-        const siteName = prompt("Enter Website Name (e.g., GitHub):");
-        const siteUrl = prompt("Enter Website URL (e.g., https://github.com):");
-
+        const siteName = prompt("Enter Website Name:");
+        const siteUrl = prompt("Enter Website URL:");
         if (siteName && siteUrl) {
             const cardElement = createCard(siteName, siteUrl);
             container.insertBefore(cardElement, addBtn);
-
             savedCards.push({ name: siteName, url: siteUrl });
             localStorage.setItem('myCustomLinks', JSON.stringify(savedCards));
         }
     });
+
     function setDynamicBackground() {
-        const body = document.body;
-        const onlineImage = "https://picsum.photos/1920/1080";
-        const localImage = "images/default-bg.jpg";
         if (navigator.onLine) {
-            body.style.backgroundImage = `url('${onlineImage}?t=${new Date().getTime()}')`;
-        } else {
-            body.style.backgroundImage = `url('${localImage}')`;
+            const onlineImage = "https://picsum.photos/1920/1080";
+            document.body.style.backgroundImage = `url('${onlineImage}?t=${new Date().getTime()}')`;
         }
     }
-
     setDynamicBackground();
 });
