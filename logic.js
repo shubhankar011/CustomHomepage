@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+    async function trackVisits() {
+        try {
+            const namespace = "cleartab-project";
+            const key = "total-opens";
+            const response = await fetch(`https://api.countapi.net/hit/${namespace}/${key}`);
+            const data = await response.json();
+            console.log(`Global Opens: ${data.value}`);
+        } catch (error) {
+            console.error("CountAPI Error:", error);
+        }
+    }
+
+
+    trackVisits();
     const nameDisplay = document.getElementById('user-name');
     const nameInput = document.getElementById('name-input');
     const greetingText = document.getElementById('greeting-text');
@@ -42,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updateGreeting();
-    setInterval(updateGreeting, 60000); 
+    setInterval(updateGreeting, 60000);
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
@@ -175,8 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setDynamicBackground() {
         if (navigator.onLine) {
-            const onlineImage = "https://picsum.photos/1920/1080";
-            document.body.style.backgroundImage = `url('${onlineImage}?t=${new Date().getTime()}')`;
+            const width = window.innerWidth < 600 ? 1080 : 1920;
+            const height = window.innerHeight < 600 ? 1920 : 1080;
+            const onlineImage = `https://picsum.photos/${width}/${height}`;
+            document.body.style.backgroundImage = `url('${onlineImage}?t=${new Date().getTime()}')`
         }
         else {
             const offlineImage = "images/default-bg.jpg"
@@ -186,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setDynamicBackground();
 
     const ddpBtn = document.getElementById('stretch');
-    const ddpImg = ddpBtn.querySelector('img'); // Target the image inside
+    const ddpImg = ddpBtn.querySelector('img');
     const controlsRow = document.querySelector('.controls-row');
 
     if (ddpBtn) {

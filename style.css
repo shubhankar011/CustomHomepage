@@ -170,7 +170,7 @@ body::after {
 
 input {
   height: 40px;
-  width: 500px;
+  width: 450px;
   font-size: larger;
   border: 0px solid white;
   border-radius: 40px;
@@ -276,7 +276,7 @@ main {
   grid-template-columns: repeat(auto-fit, 120px);
   gap: 10px;
   padding: 25px;
-  width: 75%;
+  width: 70%;
   justify-content: left;
   justify-items: center;
   /* margin: 0 auto; */
@@ -365,7 +365,7 @@ main {
   color: var(--text-color);
   text-shadow: var(--text-shadow);
   /* letter-spacing: -5px; */
-  width: 25%;
+  width: 30%;
   height: 12rem;
   text-align: center;
   background: var(--button-bg);
@@ -398,6 +398,16 @@ main {
   transform: scale(0.95);
 }
 
+@media(max-width:1485px){
+  #clock{
+    width: 35%;
+    font-size: 5rem;
+  }
+  .card-container{
+    width: 65%;
+  }
+}
+
 @media (max-width: 768px) {
 
   .header {
@@ -411,7 +421,7 @@ main {
 
   .search-row {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 15px;
     width: 100%;
@@ -446,7 +456,7 @@ main {
 
   .top {
     flex-grow: 1;
-    max-width: 300px;
+    max-width: 320px;
   }
 
   form {
@@ -477,6 +487,7 @@ main {
   }
 
   input {
+    font-size: 20px;
     width: 100%;
   }
 
