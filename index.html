@@ -20,8 +20,11 @@
             <div class="search-row">
                 <span id="stretch" class="ddp"><img src="images/ddp.png" alt=""></span>
                 <div class="top">
-                    <form action="https://www.google.com/search" method="get">
-                        <input type="text" name="q" placeholder="Search Google...">
+                    <div id="engine-toggle" class="engine-icon" title="Switch Engine">
+                        <img id="current-engine-icon" src="images/google.png" alt="G">
+                    </div>
+                    <form action="https://www.google.com/search" method="get" id="engine">
+                        <input type="text" name="q" placeholder="Search Google..." id="search-input">
                         <button type="submit">Search</button>
                     </form>
                 </div>
