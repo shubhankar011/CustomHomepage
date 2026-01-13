@@ -5,52 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Custom Homepage</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <title>Custom Homepage - Shubhankar011</title>
 </head>
 
 <body>
     <header>
         <div class="header">
-            <div class="settings">
-                <img src="settings.png" alt="Settings">
+            <div class="search-row">
+                <span id="stretch" class="ddp"><img src="images/ddp.png" alt=""></span>
+                <div class="top">
+                    <div id="engine-toggle" class="engine-icon" title="Switch Engine">
+                        <img id="current-engine-icon" src="images/google.png" alt="G">
+                    </div>
+                    <form action="https://www.google.com/search" method="get" id="engine">
+                        <input type="text" name="q" placeholder="Search Google..." id="search-input">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-            <div class="top">
-                <form action="https://www.google.com/search" method="get">
-                    <input type="text" name="q" placeholder="Search Google...">
-                    <button type="submit">Search</button>
-                </form>
+
+            <div class="controls-row">
+                <button id="theme-toggle" class="roboto">Dark-Mode</button>
+                <div class="settings">
+                    <img src="images/settings.png" alt="Settings">
+                </div>
             </div>
-            <button id="theme-toggle">
-                Dark-Mode
-            </button>
         </div>
-        <script src="logic.js"></script>
     </header>
+    <script src="logic.js"></script>
     <main>
         <div class="card-container">
-            <a href="https://github.com" class="card">
-   <img src="https://www.google.com/s2/favicons?domain=github.com" alt="icon">
-   <span>GitHub</span>
-</a>
-            <a href="https://www.youtube.com" class="card">
-   <img src="https://www.google.com/s2/favicons?domain=www.youtube.com" alt="icon">
-   <span>YouTube</span>
-</a>
-            <a href="https://gemini.google.com" class="card">
-   <img src="https://www.google.com/s2/favicons?domain=gemini.google.com" alt="icon">
-   <span>Gemini</span>
-</a>
-            <a href="https://music.youtube.com" class="card">
-   <img src="https://www.google.com/s2/favicons?domain=music.youtube.com" alt="icon">
-   <span>YT Music</span>
-</a>
-            <a href="https://notebooklm.google.com" class="card">
-   <img src="https://www.google.com/s2/favicons?domain=notebooklm.google.com" alt="icon">
-   <span>Notebook LM</span>
-</a>
-<button id="add-card-btn" class="card">+</button>
+            <div class="card-wrapper">
+                <button id="add-card-btn" class="card ubuntu-regular">+</button>
+            </div>
         </div>
-        <div id="clock"></div>
+        <div id="clock" class="oswald-400">
+            <div class="greeting-container">
+                <span id="greeting-text" class="ubuntu-medium">Good Morning,</span>
+                <span id="user-name" class="ubuntu-bold" title="Click to change name">Guest</span>
+                <input type="text" id="name-input" class="name-edit-field" style="display: none;">
+            </div>
+            <span id="time-display" class="unselectable"></span>
+        </div>
     </main>
 </body>
 
