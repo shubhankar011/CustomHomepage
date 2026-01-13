@@ -26,10 +26,19 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
 .card,
 .header,
-#clock
-{
+#clock {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -204,6 +213,29 @@ main {
   justify-content: center;
 }
 
+.greeting-container {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
+  margin-bottom: -5px;
+  letter-spacing: 0px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.name-edit-field {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 5px;
+  outline: none;
+  padding: 2px 5px;
+  width: 150px;
+}
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 120px);
@@ -308,11 +340,13 @@ main {
     inset 0 0 15px rgba(255, 255, 255, 0.05),
     0 10px 30px rgba(0, 0, 0, 0.3);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   line-height: 1;
   align-self: flex-start;
   margin-top: 20px;
+  margin-right: 1rem;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 

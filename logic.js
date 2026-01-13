@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const nameDisplay = document.getElementById('user-name');
+    const nameInput = document.getElementById('name-input');
+    const greetingText = document.getElementById('greeting-text');
+
+    function updateGreeting() {
+        const hour = new Date().getHours();
+        if (hour < 12 && hour > 4) greetingText.textContent = "Good Morning, ";
+        else if (hour < 14 && hour > 12) greetingText.textContent = "Good Afternoon, ";
+        else if (hour < 19 && hour > 14) greetingText.texContent = "Good Evening,"
+        else greetingText.textContent = "Good Night, ";
+    }
+
+    const savedName = localStorage.getItem('userName') || 'Guest';
+    nameDisplay.textContent = savedName;
+
+    nameDisplay.addEventListener('click', () => {
+        nameDisplay.style.display = 'none';
+        nameInput.style.display = 'inline-block';
+        nameInput.value = nameDisplay.textContent;
+        nameInput.focus();
+    });
+
+    nameInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const newName = nameInput.value || 'Guest';
+            localStorage.setItem('userName', newName);
+            nameDisplay.textContent = newName;
+            nameDisplay.style.display = 'inline-block';
+            nameInput.style.display = 'none';
+        }
+    });
+
+    nameInput.addEventListener('blur', () => {
+        nameDisplay.style.display = 'inline-block';
+        nameInput.style.display = 'none';
+    });
+
+    updateGreeting();
+    setInterval(updateGreeting, 60000); // Check time every minute
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
@@ -21,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateClock() {
-        const clockElement = document.getElementById('clock');
-        if (clockElement) {
+        const timeElement = document.getElementById('time-display');
+        if (timeElement) {
             const now = new Date();
-            clockElement.textContent = now.toLocaleTimeString([], {
+            timeElement.textContent = now.toLocaleTimeString([], {
                 hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
             });
         }
@@ -119,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     setDynamicBackground();
-    
+
     const ddpBtn = document.getElementById('stretch');
     const ddpImg = ddpBtn.querySelector('img'); // Target the image inside
     const controlsRow = document.querySelector('.controls-row');
