@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nameInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            const newName = nameInput.trim();
-            if (newName == "") {
+            const newName = nameInput.value;
+            if (newName.trim() == "") {
                 nameDisplay.textContent = "Guest";
             }
             else {
