@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Lumina Home",
+  "version": "1.0",
+  "description": "A glassmorphism-inspired custom dashboard.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "images/icon.png"
+  }
+}
