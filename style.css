@@ -205,13 +205,13 @@ main {
 
 .card-wrapper {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
 }
 
 .delete-btn {
-    position: absolute;
+    /* position: absolute;
     top: -5px;
-    right: -5px;
+    right: -5px; */
     background: rgba(255, 60, 60, 0.9);
     color: white;
     border: none;
@@ -219,10 +219,11 @@ main {
     width: 22px;
     height: 22px;
     cursor: pointer;
-    display: none; /* Hide by default */
+    display: none;
     z-index: 10;
     font-weight: bold;
     line-height: 1;
+    padding-bottom: 2px;
 }
 
 .card-wrapper:hover .delete-btn {

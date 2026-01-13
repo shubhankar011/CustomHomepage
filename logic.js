@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Notebook LM", url: "https://notebooklm.google.com" }
     ];
 
-    // Load data once
     let savedCards = JSON.parse(localStorage.getItem('myCustomLinks'));
     if (!savedCards || savedCards.length === 0) {
         savedCards = defaultLinks;
@@ -112,6 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (navigator.onLine) {
             const onlineImage = "https://picsum.photos/1920/1080";
             document.body.style.backgroundImage = `url('${onlineImage}?t=${new Date().getTime()}')`;
+        }
+        else{
+            const offlineImage = "images/default-bg.jpg"
+            document.body.style.backgroundImage = `url('${offlineImage}')`
         }
     }
     setDynamicBackground();
