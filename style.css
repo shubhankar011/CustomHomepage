@@ -206,6 +206,15 @@ form button {
   padding: 0 20px;
 }
 
+#engine-toggle {
+padding: 10px 0px 0px 10px;
+}
+
+#current-engine-icon {
+  height: 20px;
+  /* width: 20px; */
+}
+
 main {
   display: flex;
   width: 100%;
@@ -222,6 +231,32 @@ main {
   cursor: pointer;
   position: relative;
   z-index: 1;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#user-name {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border-bottom: 1px dashed transparent;
+  transition: all 0.3s ease;
+}
+
+#user-name:hover {
+  border-bottom: 1px dashed var(--text-color);
+  opacity: 0.8;
 }
 
 .name-edit-field {
@@ -272,7 +307,6 @@ main {
   width: 26px;
   height: 26px;
   margin-bottom: 5px;
-  ;
 }
 
 .cspan {

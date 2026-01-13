@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hour = new Date().getHours();
         if (hour < 12 && hour > 4) greetingText.textContent = "Good Morning, ";
         else if (hour < 14 && hour > 12) greetingText.textContent = "Good Afternoon, ";
-        else if (hour < 19 && hour > 14) greetingText.texContent = "Good Evening,"
+        else if (hour < 19 && hour > 14) greetingText.textContent = "Good Evening,"
         else greetingText.textContent = "Good Night, ";
     }
 
@@ -23,9 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nameInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            const newName = nameInput.value || 'Guest';
-            localStorage.setItem('userName', newName);
-            nameDisplay.textContent = newName;
+            const newName = nameInput.trim();
+            if (newName == "") {
+                nameDisplay.textContent = "Guest";
+            }
+            else {
+                nameDisplay.textContent = newName;
+            }
+            localStorage.setItem('userName', nameDisplay.textContent);
             nameDisplay.style.display = 'inline-block';
             nameInput.style.display = 'none';
         }
@@ -37,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updateGreeting();
-    setInterval(updateGreeting, 60000); // Check time every minute
+    setInterval(updateGreeting, 60000); 
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
@@ -70,6 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setInterval(updateClock, 1000);
     updateClock();
+
+    const engines = [
+        { name: 'Google', url: 'https://www.google.com/search', param: 'q', icon: 'images/google.png' },
+        { name: 'YouTube', url: 'https://www.youtube.com/results', param: 'search_query', icon: 'images/youtube.webp' },
+        { name: 'DuckDuckGo', url: 'https://duckduckgo.com/', param: 'q', icon: 'images/ddg.png' }
+    ];
+
+    let currentEngineIndex = 0;
+
+    document.getElementById('engine-toggle').addEventListener('click', () => {
+        currentEngineIndex = (currentEngineIndex + 1) % engines.length;
+        const engine = engines[currentEngineIndex]
+        const form = document.getElementById('engine');
+        const input = document.getElementById('search-input');
+        const icon = document.getElementById('current-engine-icon');
+
+        form.action = engine.url;
+        input.name = engine.param;
+        input.placeholder = `Search ${engine.name}...`;
+        icon.src = engine.icon;
+    });
 
     const addBtn = document.getElementById('add-card-btn');
     const addBtnWrapper = addBtn.parentElement;
