@@ -1,45 +1,49 @@
-<!DOCTYPE html> 
-<html lang="en"> 
- 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="fonts.css"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link 
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" 
-        rel="stylesheet"> 
-    <title>Custom Homepage - Shubhankar011</title> 
-</head> 
- 
-<body> 
-    <header> 
-        <div class="header"> 
-            <div class="settings"> 
-                <img src="settings.png" alt="Settings"> 
-            </div> 
-            <div class="top"> 
-                <form action="https://www.google.com/search" method="get"> 
-                    <input type="text" name="q" placeholder="Search Google..."> 
-                    <button type="submit">Search</button> 
-                </form> 
-            </div> 
-            <button id="theme-toggle" class="roboto"> 
-                Dark-Mode 
-            </button> 
-        </div> 
-        <script src="logic.js"></script> 
-    </header> 
-    <main> 
-        <div class="card-container"> 
-            <div class="card-wrapper"> 
-                <button id="add-card-btn" class="card ubuntu-regular">+</button> 
-            </div> 
-        </div> 
-        <div id="clock" class="oswald-400"></div> 
-    </main> 
-</body> 
- 
-</html> 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <title>Custom Homepage - Shubhankar011</title>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="search-row">
+                <span id="stretch" class="ddp"><img src="images/ddp.png" alt=""></span>
+                <div class="top">
+                    <form action="https://www.google.com/search" method="get">
+                        <input type="text" name="q" placeholder="Search Google...">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="controls-row">
+                <button id="theme-toggle" class="roboto">Dark-Mode</button>
+                <div class="settings">
+                    <img src="images/settings.png" alt="Settings">
+                </div>
+            </div>
+        </div>
+    </header>
+    <script src="logic.js"></script>
+    <main>
+        <div class="card-container">
+            <div class="card-wrapper">
+                <button id="add-card-btn" class="card ubuntu-regular">+</button>
+            </div>
+        </div>
+        <div id="clock" class="oswald-400"></div>
+    </main>
+</body>
+
+</html>

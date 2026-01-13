@@ -2,8 +2,9 @@
   --bg-color: #848484d6;
   --text-color: #030303;
   --bg-after: rgba(112, 112, 112, 0.436);
-  --button-bg: #9191913e;
-  --filter: invert(100%);
+  --button-bg: rgba(255, 255, 255, 0.35);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --filter: invert(0%);
   --glass-bg: rgba(255, 255, 255, 0.089);
   --glass-border: rgba(255, 255, 255, 0.15);
   --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -12,9 +13,10 @@
 [data-theme="dark"] {
   --bg-color: #121212;
   --text-color: #e0e0e0;
+  --glass-bg: rgba(0, 0, 0, 0.249);
   --bg-after: rgba(0, 0, 0, 0.546);
   --button-bg: rgba(255, 255, 255, 0.1);
-  --filter: invert(0%);
+  --filter: invert(100%);
 }
 
 * {
@@ -26,10 +28,8 @@
 
 .card,
 .header,
-.settings,
-#theme-toggle,
-#clock,
-.settings {
+#clock
+{
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -47,16 +47,46 @@
   margin-left: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   backdrop-filter: blur(5px);
+  margin-right: 1rem;
+}
+
+.ddp {
+  background: var(--text-color);
+  color: var(--bg-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  text-align: center;
+  margin-left: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  backdrop-filter: blur(5px);
+  display: none;
+  padding: 0px 0px 2px;
+}
+
+.ddp img {
+  margin: 4px 4px 0px;
+  filter: var(--filter);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.rotate-icon {
+  transform: rotate(-90deg);
 }
 
 .settings img {
   margin: 4px 4px 0px;
   filter: var(--filter);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.settings:active img {
+  transform: rotate(-20deg);
 }
 
 #theme-toggle {
-  background: var(--text-color);
-  color: var(--bg-color);
+  color: var(--text-color);
   border: none;
   cursor: pointer;
   border-radius: 40px;
@@ -103,11 +133,30 @@ body::after {
   border-bottom: 1px solid var(--glass-border);
 }
 
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .top {
   border: 2px solid var(--text-color);
   display: flex;
   border-radius: 40px;
   justify-content: space-between;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  margin-left: 1rem;
+}
+
+.top:focus-within {
+  transform: scale(1.03);
+  border-color: #2a2e3476;
+  box-shadow: 0 0 15px rgba(66, 133, 244, 0.3);
+}
+
+.top:focus-within button {
+  background-color: #272a3093;
+  color: white;
 }
 
 input {
@@ -213,7 +262,7 @@ main {
 
 .delete-btn {
   position: absolute;
-  top: -10px;          
+  top: -10px;
   right: -10px;
   background: rgba(255, 60, 60, 0.9);
   color: white;
@@ -247,7 +296,7 @@ main {
 #clock {
   font-size: 6rem;
   letter-spacing: -3px;
-  color: white;
+  color: var(--text-color);
   text-shadow: var(--text-shadow);
   /* letter-spacing: -5px; */
   width: 25%;
@@ -264,9 +313,80 @@ main {
   line-height: 1;
   align-self: flex-start;
   margin-top: 20px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#theme-toggle,
+.settings,
+.ddp {
+  background: var(--glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+#theme-toggle:active,
+.settings:active,
+.ddp:active {
+  transform: scale(0.95);
 }
 
 @media (max-width: 768px) {
+
+  .header {
+    padding: 15px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    padding: 0;
+  }
+
+  .controls-row.active {
+    display: flex;
+    margin-top: 10px;
+    /* max-height: 100px; */
+    opacity: 1;
+    padding: 15px 0;
+  }
+
+  .ddp {
+    display: flex;
+    margin-left: 0;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .top {
+    flex-grow: 1;
+    max-width: 300px;
+  }
+
+  form {
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+  }
+
   main {
     flex-direction: column-reverse;
     align-items: center;
@@ -278,7 +398,7 @@ main {
     grid-template-columns: repeat(auto-fit, 100px);
     justify-items: center;
     justify-content: center;
-    margin: 0px;
+    margin-top: 20px;
     overflow: scroll;
   }
 
@@ -288,15 +408,8 @@ main {
     margin: 20px 20px 0px 22px;
   }
 
-  .header {
-    padding: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
   input {
-    width: 220px;
+    width: 100%;
   }
 
   .delete-btn {
