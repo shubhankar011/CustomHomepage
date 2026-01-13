@@ -113,10 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const onlineImage = "https://picsum.photos/1920/1080";
             document.body.style.backgroundImage = `url('${onlineImage}?t=${new Date().getTime()}')`;
         }
-        else{
+        else {
             const offlineImage = "images/default-bg.jpg"
             document.body.style.backgroundImage = `url('${offlineImage}')`
         }
     }
     setDynamicBackground();
+    
+    const ddpBtn = document.getElementById('stretch');
+    const ddpImg = ddpBtn.querySelector('img'); // Target the image inside
+    const controlsRow = document.querySelector('.controls-row');
+
+    if (ddpBtn) {
+        ddpBtn.addEventListener('click', () => {
+            controlsRow.classList.toggle('active');
+            ddpImg.classList.toggle('rotate-icon');
+        });
+    }
 });
