@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock();
 
     const addBtn = document.getElementById('add-card-btn');
+    const addBtnWrapper = addBtn.parentElement;
     const container = document.querySelector('.card-container');
 
     const defaultLinks = [
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     savedCards.forEach(card => {
         const cardElement = createCard(card.name, card.url);
-        container.insertBefore(cardElement, addBtn);
+        container.insertBefore(cardElement, addBtnWrapper);
     });
 
     addBtn.addEventListener('click', () => {
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const siteUrl = prompt("Enter Website URL:");
         if (siteName && siteUrl) {
             const cardElement = createCard(siteName, siteUrl);
-            container.insertBefore(cardElement, addBtn);
+            container.insertBefore(cardElement, addBtnWrapper);
             savedCards.push({ name: siteName, url: siteUrl });
             localStorage.setItem('myCustomLinks', JSON.stringify(savedCards));
         }
