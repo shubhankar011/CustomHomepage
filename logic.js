@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+    async function trackVisits() {
+        try {
+            const namespace = "cleartab-project";
+            const key = "total-opens";
+            const response = await fetch(`https://api.countapi.net/hit/${namespace}/${key}`);
+            const data = await response.json();
+            console.log(`Global Opens: ${data.value}`);
+        } catch (error) {
+            console.error("CountAPI Error:", error);
+        }
+    }
+
+
+    trackVisits();
     const nameDisplay = document.getElementById('user-name');
     const nameInput = document.getElementById('name-input');
     const greetingText = document.getElementById('greeting-text');
