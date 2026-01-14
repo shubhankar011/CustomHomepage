@@ -1,15 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    async function trackVisits() {
-        try {
-            const response = await fetch(`https://api.hicounter.com/hit/cleartab-shubhankar/visits`);
-            const data = await response.json();
-            console.log(`Global Opens: ${data.value}`);
-        } catch (error) {
-            console.error("Hicounter Error:", error);
-        }
-    }
-
-    trackVisits();
+    fetch('YOUR_GOOGLE_SCRIPT_URL')
+        .then(res => res.json())
+        .then(data => console.log("Global Views:", data.value))
+        .catch(err => console.log("Google Script busy, but no error thrown!"));
   
     const nameDisplay = document.getElementById('user-name');
     const nameInput = document.getElementById('name-input');
