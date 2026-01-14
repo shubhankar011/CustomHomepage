@@ -10,8 +10,8 @@
     "storage"
   ],
   "host_permissions": [
-    "https://api.countapi.net/*"
-  ],
+  "https://api.hicounter.com/*"
+],
   "action": {
     "default_popup": "index.html",
     "default_icon": "images/icon.png"
