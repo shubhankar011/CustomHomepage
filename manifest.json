@@ -10,7 +10,8 @@
     "storage"
   ],
   "host_permissions": [
-  "https://api.hicounter.com/*"
+  "https://script.google.com/*",
+  "https://script.googleusercontent.com/*"
 ],
   "action": {
     "default_popup": "index.html",
