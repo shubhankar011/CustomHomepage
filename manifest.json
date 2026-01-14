@@ -10,8 +10,9 @@
     "storage"
   ],
   "host_permissions": [
-    "https://api.countapi.net/*"
-  ],
+  "https://script.google.com/*",
+  "https://script.googleusercontent.com/*"
+],
   "action": {
     "default_popup": "index.html",
     "default_icon": "images/icon.png"
