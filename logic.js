@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
- 
+
     fetch('YOUR_GOOGLE_SCRIPT_URL')
         .then(res => res.json())
         .then(data => console.log("Global Views:", data.value))
