@@ -11,17 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     trackVisits();
+
     const nameDisplay = document.getElementById('user-name');
     const nameInput = document.getElementById('name-input');
     const greetingText = document.getElementById('greeting-text');
 
     function updateGreeting() {
         const hour = new Date().getHours();
-        if (hour < 12 && hour > 4) greetingText.textContent = "Good Morning, ";
-        else if (hour < 14 && hour > 12) greetingText.textContent = "Good Afternoon, ";
-        else if (hour < 19 && hour > 14) greetingText.textContent = "Good Evening,"
+        if (hour < 12 && hour >= 4) greetingText.textContent = "Good Morning, ";
+        else if (hour <= 14 && hour >= 12) greetingText.textContent = "Good Afternoon, ";
+        else if (hour <= 19 && hour > 14) greetingText.textContent = "Good Evening,"
         else greetingText.textContent = "Good Night, ";
     }
 
