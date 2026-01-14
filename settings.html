@@ -9,18 +9,11 @@
 
 <body>
     <script>
-        async function trackVisits() {
-
-            const response = await fetch(`https://api.hicounter.com/hit/cleartab-shubhankar/visits`);
-            const data = await response.json();
-
-            console.log(`ClearTab has been opened ${data.value} times!`);
-
-            const statsElement = document.getElementById('visit-count');
-            if (statsElement) statsElement.textContent = data.value;
-        }
-
-        trackVisits();
+        fetch('YOUR_GOOGLE_SCRIPT_URL?action=get')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('visit-count').textContent = data.value;
+            });
     </script>
 </body>
 
