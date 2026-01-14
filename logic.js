@@ -1,27 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    async function trackVisits() {
-        try {
-            const namespace = "cleartab-project";
-            const key = "total-opens";
-            const response = await fetch(`https://api.countapi.net/hit/${namespace}/${key}`);
-            const data = await response.json();
-            console.log(`Global Opens: ${data.value}`);
-        } catch (error) {
-            console.error("CountAPI Error:", error);
-        }
-    }
-
-
-    trackVisits();
+    fetch('YOUR_GOOGLE_SCRIPT_URL')
+        .then(res => res.json())
+        .then(data => console.log("Global Views:", data.value))
+        .catch(err => console.log("Google Script busy, but no error thrown!"));
+  
     const nameDisplay = document.getElementById('user-name');
     const nameInput = document.getElementById('name-input');
     const greetingText = document.getElementById('greeting-text');
 
     function updateGreeting() {
         const hour = new Date().getHours();
-        if (hour < 12 && hour > 4) greetingText.textContent = "Good Morning, ";
-        else if (hour < 14 && hour > 12) greetingText.textContent = "Good Afternoon, ";
-        else if (hour < 19 && hour > 14) greetingText.textContent = "Good Evening,"
+        if (hour < 12 && hour >= 4) greetingText.textContent = "Good Morning, ";
+        else if (hour <= 14 && hour >= 12) greetingText.textContent = "Good Afternoon, ";
+        else if (hour <= 19 && hour > 14) greetingText.textContent = "Good Evening,"
         else greetingText.textContent = "Good Night, ";
     }
 
