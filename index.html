@@ -54,9 +54,21 @@
                 <span id="user-name" class="ubuntu-bold" title="Click to change name">Guest</span>
                 <input type="text" id="name-input" class="name-edit-field" style="display: none;">
             </div>
-            <span id="time-display" class="unselectable"></span>
+            <span id="time-display" class="unselectable clock"></span>
+            <span id="day-display" class="unselectable"></span>
         </div>
     </main>
+    <div class="calendar-container">
+        <div class="header-cal">
+            <button id="prevBtn" class="btn">← Prev</button>
+            <div class="month-year" id="monthYear"></div>
+            <button id="nextBtn" class="btn">Next →</button>
+        </div>
+        <div class="days-grid" id="daysGrid"></div>
+    </div>
+    <script src="calendar.js"></script>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
 
 </html>

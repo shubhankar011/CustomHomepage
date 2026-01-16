@@ -72,11 +72,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateClock() {
         const timeElement = document.getElementById('time-display');
-        if (timeElement) {
+        const DayElement = document.getElementById('day-display');
+        if (timeElement && DayElement) {
             const now = new Date();
+            const month = now.getMonth()+1;
+            const year = now.getFullYear();
+            const date = now.getDate();
             timeElement.textContent = now.toLocaleTimeString([], {
                 hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
             });
+            DayElement.textContent = now.toLocaleDateString();
+
         }
     }
     setInterval(updateClock, 1000);
