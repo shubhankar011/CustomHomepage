@@ -613,15 +613,15 @@ main {
 }
 
 .day.past {
-  background: rgba(0, 0, 0, 0.975);
+  background: var(--bg-color);
   color: var(--text-color);
   opacity: 0.85;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
+  /* border: 1px solid var(--text-color); */
+} 
 
 .day.future {
   background: transparent;
-  border: 1px dashed rgba(255, 255, 255, 0.308);
+  border: 1px dashed var(--text-color);
   color: var(--text-color);
   opacity: 0.75;
 }
