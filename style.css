@@ -507,7 +507,7 @@ main {
     justify-items: center;
     justify-content: center;
     margin-top: 20px;
-    overflow: scroll;
+    /* overflow: scroll; */
   }
 
   #clock {
@@ -529,6 +529,14 @@ main {
     position: absolute;
     right: -10px;
   }
+  .day {
+    min-height: 18px;
+  }
+
+  .calendar-container {
+    padding: 14px;
+    margin-left: 3.5rem;
+  }
 }
 
 .calendar-container {
@@ -542,8 +550,9 @@ main {
   backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 30px;
+  align-items: center;
+  justify-items: space-around;
+  margin-left: 2rem;
 }
 
 .header-cal {
@@ -630,7 +639,3 @@ main {
   border: none;
 }
 
-@media (max-width: 768px) {
-  .day { min-height: 18px; }
-  .calendar-container { padding: 14px; }
-}
