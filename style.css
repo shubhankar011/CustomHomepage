@@ -507,7 +507,7 @@ main {
     justify-items: center;
     justify-content: center;
     margin-top: 20px;
-    overflow: scroll;
+    /* overflow: scroll; */
   }
 
   #clock {
@@ -631,6 +631,11 @@ main {
 }
 
 @media (max-width: 768px) {
-  .day { min-height: 18px; }
-  .calendar-container { padding: 14px; }
+  .day {
+    min-height: 18px;
+  }
+
+  .calendar-container {
+    padding: 14px;
+  }
 }
