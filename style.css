@@ -81,7 +81,7 @@
 }
 
 .rotate-icon {
-  transform: rotate(-90deg);
+  transform: rotate(-180deg);
 }
 
 .settings img {
@@ -529,6 +529,7 @@ main {
     position: absolute;
     right: -10px;
   }
+
   .day {
     min-height: 18px;
   }
@@ -539,103 +540,131 @@ main {
   }
 }
 
-.calendar-container {
+.cale {
+  display: flex;
+  align-items: center;
   background: var(--glass-bg);
-  color: var(--text-color);
-  padding: 22px;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-  max-width: 200px;
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border-radius: 20px;
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(8px);
+  margin: 20px;
+  width: fit-content;
+}
+
+.cale span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-items: space-around;
-  margin-left: 2rem;
+  justify-content: center;
+  text-align: center;
 }
 
-.header-cal {
+.cale-1 {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding-right: 20px;
+  border-right: 1px solid var(--glass-border);
+}
+
+.cale-2 {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-  background: transparent;
+  justify-content: space-between;
+  width: 100%;
+  gap: 5px;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
-.month-year {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-color);
+.cale-2 p {
+  margin: 0;
+  display: inline;
+  font-size: large;
 }
 
-.btn {
-  background: var(--button-bg);
-  color: var(--text-color);
-  border: 1px solid var(--glass-border);
-  padding: 2px 3px;
-  border-radius: 8px;
+.cale-2 img {
+  transform: rotate(-90deg);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
-  font-size: 12px;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+.rotate-icon2 {
+  transform: rotate(90deg) !important;
 }
 
-.btn:disabled {
-  background: transparent;
-  cursor: not-allowed;
-  opacity: 0.6;
+/* .calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  max-width: 100%;
+} */
+.cale-3 {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.4s ease, 
+              padding 0.5s ease;
+  padding-left: 0;
+}
+
+.cale-3.active {
+  opacity: 1;
+  max-width: fit-content;
+  padding-left: 10px;
+  max-width: 1000px;
 }
 
 .days-grid {
   display: grid;
-  grid-template-columns: repeat(7, 0.01fr);
-  gap: 2px;
+  grid-template-rows: repeat(7, 12px);
+  grid-auto-flow: column;
+  grid-auto-columns: 12px;
+  gap: 3.5px;
+  padding-left: 5px;
 }
 
 .day {
-  min-height: 20px;
-  width: 20px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
   font-size: 0px;
-  background: transparent;
-  color: var(--text-color);
-  border: 1px solid transparent;
-  transition: all 0.15s ease;
+  transition: transform 0.1s ease;
 }
 
 .day.past {
-  background: var(--bg-color);
-  color: var(--text-color);
-  opacity: 0.85;
-  /* border: 1px solid var(--text-color); */
-} 
+  background: var(--text-color);
+  opacity: 0.6;
+}
 
 .day.future {
-  background: transparent;
-  border: 1px dashed var(--text-color);
-  color: var(--text-color);
-  opacity: 0.75;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
 }
 
 .day.today {
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.14), rgba(33, 150, 243, 0.06));
-  border: 1px solid rgba(33, 150, 243, 0.5);
-  color: var(--text-color);
-  font-weight: 700;
-  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.1);
+  background: #2196f3;
+  border: 1px solid #fff;
+  transform: scale(1.2);
+  z-index: 2;
 }
 
-.day.empty {
-  background: transparent;
-  border: none;
+.day:hover {
+  transform: scale(1.3);
+  outline: 1px solid var(--text-color);
 }
 
+/* .header-cal {
+  
+ } */
+.percentage {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  margin: -5px 0;
+}
