@@ -18,15 +18,15 @@
         <header>
             <div class="header">
                 <div class="search-row">
-                    <span id="stretch" class="ddp"><img src="images/ddp.png" alt=""></span>
+                    <span id="stretch" class="ddp"><img src="{{ url_for('static', filename='img/ddp.png') }}" alt=""></span>
                     <div class="top">
                         <div id="engine-toggle" class="engine-icon" title="Switch Engine">
-                            <img id="current-engine-icon" src="images/google.png" alt="G">
+                            <img id="current-engine-icon" src="{{ url_for('static', filename='img/google.png') }}" alt="G">
                         </div>
                         <form action="https://www.google.com/search" method="get" id="engine">
                             <input type="text" name="q" placeholder="Search Google..." id="search-input">
                             <button type="submit">
-                                <img src="images/search-icon.png" alt="">
+                                <img src="{{ url_for('static', filename='img/search-icon.png') }}" alt="">
                                 <span>Search</span>
                             </button>
                         </form>
@@ -36,12 +36,12 @@
                 <div class="controls-row">
                     <button id="theme-toggle" class="roboto">Dark-Mode</button>
                     <div class="settings">
-                        <A href="settings.html"><img src="images/settings.png" alt="Settings"></A>
+                        <A href="settings.html"><img src="{{ url_for('static', filename='img/settings.png') }}" alt="Settings"></A>
                     </div>
                 </div>
             </div>
         </header>
-        <script src="logic.js"></script>
+        <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
         <main>
             <div class="card-container">
                 <div class="card-wrapper">
@@ -61,7 +61,7 @@
         <div class="cale">
             <span class="cale-1">
                 <div class="cale-2">
-                    <p class="roboto-500">Progress: </p> <span class="ddp" id="toggle-2"><img src="images/ddp.png" alt=""></span>
+                    <p class="roboto-500">Progress: </p> <span class="ddp" id="toggle-2"><img src="{{ url_for('static', filename='img/ddp.png') }}" alt=""></span>
                 </div>
                 <div class="percentage" id="perc">
                 </div>
@@ -78,7 +78,7 @@
                 </div>
             </span>
         </div>
-        <script src="calendar.js"></script>
+        <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
         <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     </body>
 
