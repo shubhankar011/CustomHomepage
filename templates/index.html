@@ -1,74 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../fonts.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-    <title>Custom Homepage - Shubhankar011</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="fonts.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+            rel="stylesheet">
+        <title>Custom Homepage - Shubhankar011</title>
+    </head>
 
-<body>
-    <header>
-        <div class="header">
-            <div class="search-row">
-                <span id="stretch" class="ddp"><img src="images/ddp.png" alt=""></span>
-                <div class="top">
-                    <div id="engine-toggle" class="engine-icon" title="Switch Engine">
-                        <img id="current-engine-icon" src="images/google.png" alt="G">
+    <body>
+        <header>
+            <div class="header">
+                <div class="search-row">
+                    <span id="stretch" class="ddp"><img src="{{ url_for('static', filename='img/ddp.png') }}" alt=""></span>
+                    <div class="top">
+                        <div id="engine-toggle" class="engine-icon" title="Switch Engine">
+                            <img id="current-engine-icon" src="{{ url_for('static', filename='img/google.png') }}" alt="G">
+                        </div>
+                        <form action="https://www.google.com/search" method="get" id="engine">
+                            <input type="text" name="q" placeholder="Search Google..." id="search-input">
+                            <button type="submit">
+                                <img src="{{ url_for('static', filename='img/search-icon.png') }}" alt="">
+                                <span>Search</span>
+                            </button>
+                        </form>
                     </div>
-                    <form action="https://www.google.com/search" method="get" id="engine">
-                        <input type="text" name="q" placeholder="Search Google..." id="search-input">
-                        <button type="submit">
-                            <img src="images/search-icon.png" alt="">
-                            <span>Search</span>
-                        </button>
-                    </form>
+                </div>
+
+                <div class="controls-row">
+                    <button id="theme-toggle" class="roboto">Dark-Mode</button>
+                    <div class="settings">
+                        <A href="settings.html"><img src="{{ url_for('static', filename='img/settings.png') }}" alt="Settings"></A>
+                    </div>
                 </div>
             </div>
-
-            <div class="controls-row">
-                <button id="theme-toggle" class="roboto">Dark-Mode</button>
-                <div class="settings">
-                    <A href="settings.html"><img src="images/settings.png" alt="Settings"></A>
+        </header>
+        <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+        <main>
+            <div class="card-container">
+                <div class="card-wrapper">
+                    <button id="add-card-btn" class="card ubuntu-regular">+</button>
                 </div>
             </div>
-        </div>
-    </header>
-    <script src="../logic.js"></script>
-    <main>
-        <div class="card-container">
-            <div class="card-wrapper">
-                <button id="add-card-btn" class="card ubuntu-regular">+</button>
+            <div id="clock" class="oswald-400">
+                <div class="greeting-container">
+                    <span id="greeting-text" class="ubuntu-medium">Good Morning,</span>
+                    <span id="user-name" class="ubuntu-bold" title="Click to change name">Guest</span>
+                    <input type="text" id="name-input" class="name-edit-field" style="display: none;">
+                </div>
+                <span id="time-display" class="unselectable clock"></span>
+                <span id="day-display" class="unselectable"></span>
             </div>
-        </div>
-        <div id="clock" class="oswald-400">
-            <div class="greeting-container">
-                <span id="greeting-text" class="ubuntu-medium">Good Morning,</span>
-                <span id="user-name" class="ubuntu-bold" title="Click to change name">Guest</span>
-                <input type="text" id="name-input" class="name-edit-field" style="display: none;">
-            </div>
-            <span id="time-display" class="unselectable clock"></span>
-            <span id="day-display" class="unselectable"></span>
-        </div>
-    </main>
-    <div class="calendar-container">
-        <div class="header-cal">
-            <button id="prevBtn" class="btn">← Prev</button>
-            <div class="month-year" id="monthYear"></div>
-            <button id="nextBtn" class="btn">Next →</button>
-        </div>
-        <div class="days-grid" id="daysGrid"></div>
-    </div>
-    <script src="../calendar.js"></script>
-    <!-- 100% privacy-first analytics -->
-    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-</body>
+        </main>
+        <div class="cale">
+            <span class="cale-1">
+                <div class="cale-2">
+                    <p class="roboto-500">Progress: </p> <span class="ddp" id="toggle-2"><img src="{{ url_for('static', filename='img/ddp.png') }}" alt=""></span>
+                </div>
+                <div class="percentage" id="perc">
+                </div>
+                <div class="header-cal">
+                    <!-- <button id="prevBtn" class="btn">← Prev</button> -->
+                    <div class="month-year" id="monthYear"></div>
+                    <!-- <button id="nextBtn" class="btn">Next →</button> -->
+                </div>
+            </span>
 
-</html>
+            <span class="cale-3" id="calen-3">
+                <div class="calendar-container">
+                    <div class="days-grid" id="daysGrid"></div>
+                </div>
+            </span>
+        </div>
+        <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+        <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    </body>
+
+    </html>
