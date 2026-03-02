@@ -37,10 +37,10 @@ function renderCalendar() {
 
     // const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
     
-    for (let day = 0; day <= days; day++) {
+    for (let day = 0; day < days; day++) {
         const dayDiv = document.createElement('div');
         dayDiv.className = 'day';
-        const date1= new Date(currentYear, 0, day + 1);
+        const date1= new Date(currentYear, 0, day);
         dayDiv.title = date1.toDateString();
         dayDiv.textContent = day;
 

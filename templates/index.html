@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="fonts.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='img/fonts.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
@@ -36,7 +36,7 @@
                 <div class="controls-row">
                     <button id="theme-toggle" class="roboto">Dark-Mode</button>
                     <div class="settings">
-                        <A href="settings.html"><img src="{{ url_for('static', filename='img/settings.png') }}" alt="Settings"></A>
+                        <A href="{{url_for('settings_page') }}"><img src="{{ url_for('static', filename='img/settings.png') }}" alt="Settings"></A>
                     </div>
                 </div>
             </div>
