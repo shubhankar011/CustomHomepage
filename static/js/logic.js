@@ -81,7 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
             timeElement.textContent = now.toLocaleTimeString([], {
                 hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
             });
-            DayElement.textContent = now.toLocaleDateString();
+            DayElement.textContent = now.toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                day: 'numeric', 
+                month: 'short' 
+            });
 
         }
     }
@@ -89,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock();
 
     const engines = [
-        { name: 'Google', url: 'https://www.google.com/search', param: 'q', icon: 'images/google.png' },
-        { name: 'YouTube', url: 'https://www.youtube.com/results', param: 'search_query', icon: 'images/youtube.webp' },
-        { name: 'DuckDuckGo', url: 'https://duckduckgo.com/', param: 'q', icon: 'images/ddg.png' }
+        { name: 'Google', url: 'https://www.google.com/search', param: 'q', icon: '/static/img/google.png' },
+        { name: 'YouTube', url: 'https://www.youtube.com/results', param: 'search_query', icon: '/static/img/youtube.webp' },
+        { name: 'DuckDuckGo', url: 'https://duckduckgo.com/', param: 'q', icon: '/static/img/ddg.png' }
     ];
 
     let currentEngineIndex = 0;
