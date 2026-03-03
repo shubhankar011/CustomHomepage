@@ -2,7 +2,7 @@
 
 A minimalist, distraction-free browser homepage with a Glassmorphism design. Built with Flask on the backend and vanilla JS/CSS on the frontend, deployed on Vercel.
 
-**Live**: [custom-homepage-liart.vercel.app](https://cleartab.vercel.app)
+**Live**: [cleartab.vercel.app](https://cleartab.vercel.app)
 
 ---
 
